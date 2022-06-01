@@ -9,6 +9,9 @@ let PersonneSchema = Schema({
     prenom: String,
     username: String,
     motdepasse: String,
+    dateDeNaissance: Date,
+    genre: String,
+    adresse: String,
     doses: [
         {nomVaccin:String, dateVaccination: String}
     ]

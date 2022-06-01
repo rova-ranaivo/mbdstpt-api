@@ -22,6 +22,9 @@ function addPersonne(req, res) {
     p.nom = req.body.nom;
     p.prenom = req.body.prenom;
     p.doses = req.body.doses;
+    p.genre = req.body.genre;
+    p.dateDeNaissance = req.body.dateDeNaissance;
+    p.adresse = req.body.adresse;
 
     p.save((err) => {
         if (err) {
