@@ -6,7 +6,7 @@ function getPersonnes(req, res) {
     Personne.aggregatePaginate(aggregateQuery,
         {
             page: parseInt(req.query.page) || 1,
-            limit: parseInt(req.query.limit) || 10,
+            limit: parseInt(req.query.limit) || 1000,
         },
         (err, personnes) => {
             if (err) {
@@ -43,4 +43,16 @@ function getPersonne(req, res) {
     })
 }
 
-module.exports = { getPersonnes, addPersonne, getPersonne };
+function addDoseToPersonne(req, res) {
+    console.log(req.body, "------------------");
+    Personne.findByIdAndUpdate(req.body._id, req.body, { new: true }, (err, personne) => {
+        if (err) {
+            console.log(err);
+            res.send(err)
+        } else {
+            res.json({ message: `${personne} mis à jour!`, result: personne })
+        }
+    });
+}
+
+module.exports = { getPersonnes, addPersonne, getPersonne, addDoseToPersonne };

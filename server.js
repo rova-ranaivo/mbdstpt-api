@@ -7,6 +7,7 @@ const authenticateToken = require('./middleware/authenticateToken');
 const app = express();
 const port = process.env.PORT || 3000;
 let personne = require('./routes/personne');
+let vaccin = require('./routes/vaccin');
 
 let authentication = require('./routes/authentication');
 
@@ -49,6 +50,10 @@ app.route('/personnes')
 
 app.route('/personne/:id')
     .get(personne.getPersonne)
+    .put(personne.addDoseToPersonne)
+
+app.route('/vaccins')
+    .get(vaccin.getVaccins)
 
 app.route('/data')
     .get([authenticateToken.authToken], (req, res, next) => res.json({ message: 'OK deba a!!!' }) );
