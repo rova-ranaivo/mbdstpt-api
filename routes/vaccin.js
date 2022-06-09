@@ -11,4 +11,16 @@ function getVaccins(req, res) {
     });
 }
 
-module.exports = { getVaccins };
+function addVaccin(req, res) {
+    let v = new Vaccin();
+    v.nomVaccin = req.body.nomVaccin;
+
+    v.save((err) => {
+        if (err) {
+            res.send('cant post vaccin ', err);
+        }
+        res.json({ message: `${v.nomVaccin} saved!` })
+    })
+}
+
+module.exports = { getVaccins, addVaccin };

@@ -55,7 +55,10 @@ app.route('/personne/:id')
 app.route('/vaccins')
     .get(vaccin.getVaccins)
 
+app.route('/vaccin/add')
+    .post(vaccin.addVaccin)
+
 app.route('/data')
-    .get([authenticateToken.authToken], (req, res, next) => res.json({ message: 'OK deba a!!!' }) );
+    .get([authenticateToken.authToken], (req, res, next) => res.json({ message: 'Token!!!' }) );
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));
