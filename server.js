@@ -52,6 +52,9 @@ app.route('/personne/:id')
     .get(personne.getPersonne)
     .put(personne.addDoseToPersonne)
 
+app.route('/personne/:id/edit')
+    .put(personne.updatePersonne)
+
 app.route('/vaccins')
     .get(vaccin.getVaccins)
 

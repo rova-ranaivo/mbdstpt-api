@@ -48,6 +48,7 @@ function authenticateUser(req, res) {
                 id: p._id,
                 nom: p.nom,
                 prenom: p.prenom,
+                username: p.username,
                 accessToken: jwt.sign({id: p._id}, process.env.ACCESS_TOKEN_SECRET, {expiresIn:3600})
             };
 

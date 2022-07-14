@@ -55,4 +55,21 @@ function addDoseToPersonne(req, res) {
     });
 }
 
-module.exports = { getPersonnes, addPersonne, getPersonne, addDoseToPersonne };
+function updatePersonne(req, res) {
+    console.log("UPDATE recu utilisateur : ");
+    console.log(req.body);
+    Personne.findByIdAndUpdate(req.body._id, req.body, { new: true }, (err, user) => {
+        if (err) {
+            console.log(err);
+            res.send(err)
+        } else {
+            if (user) {
+                res.json({ message: `${user.nom} mis à jour!`, result: user });
+            } else {
+                res.status(404).json({ message: "user not found" });
+            }
+        }
+    });
+}
+
+module.exports = { getPersonnes, addPersonne, getPersonne, addDoseToPersonne, updatePersonne };
