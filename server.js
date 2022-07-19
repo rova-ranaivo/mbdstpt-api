@@ -61,6 +61,9 @@ app.route('/vaccins')
 app.route('/vaccin/add')
     .post(vaccin.addVaccin)
 
+app.route('/vaccin/:id')
+    .get(vaccin.getVaccin)
+
 app.route('/data')
     .get([authenticateToken.authToken], (req, res, next) => res.json({ message: 'Token!!!' }) );
 
