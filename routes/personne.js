@@ -1,12 +1,12 @@
 let Personne = require('../models/personne');
 
 function getPersonnes(req, res) {
-    
+
     var aggregateQuery = Personne.aggregate();
     Personne.aggregatePaginate(aggregateQuery,
         {
-            page: parseInt(req.query.page) || 1,
-            limit: parseInt(req.query.limit) || 1000,
+            page: 1,
+            limit: 1000,
         },
         (err, personnes) => {
             if (err) {
@@ -44,7 +44,6 @@ function getPersonne(req, res) {
 }
 
 function addDoseToPersonne(req, res) {
-    console.log(req.body, "------------------");
     Personne.findByIdAndUpdate(req.body._id, req.body, { new: true }, (err, personne) => {
         if (err) {
             console.log(err);
@@ -56,8 +55,6 @@ function addDoseToPersonne(req, res) {
 }
 
 function updatePersonne(req, res) {
-    console.log("UPDATE recu utilisateur : ");
-    console.log(req.body);
     Personne.findByIdAndUpdate(req.body._id, req.body, { new: true }, (err, user) => {
         if (err) {
             console.log(err);
