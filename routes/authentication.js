@@ -27,7 +27,8 @@ function authenticateUser(req, res) {
             res.json(response);
         }
         else {
-            res.json({"message": "Authentication failed" + error});
+            res.status(401);
+            res.send({'message': 'Identifiant ou mot de passe incorrect.'})
         }
     })
 }
