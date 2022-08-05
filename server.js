@@ -36,7 +36,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Pour les formulaires
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -63,8 +62,5 @@ app.route('/vaccin/add')
 
 app.route('/vaccin/:id')
     .get(vaccin.getVaccin)
-
-app.route('/data')
-    .get([authenticateToken.authToken], (req, res, next) => res.json({ message: 'Token!!!' }) );
 
 app.listen(port, () => console.log(`listening on http://localhost:${port}`));

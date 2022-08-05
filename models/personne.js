@@ -12,6 +12,7 @@ let PersonneSchema = Schema({
     dateDeNaissance: Date,
     genre: String,
     adresse: String,
+    isAdmin: Boolean,
     doses: [
         {nomVaccin:String, dateVaccination: String}
     ]

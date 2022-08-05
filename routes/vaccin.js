@@ -27,9 +27,9 @@ function addVaccin(req, res) {
 
     v.save((err) => {
         if (err) {
-            res.send('cant post vaccin ', err);
+            res.send('Echec de l\'ajout du vaccin ', err);
         }
-        res.json({ message: `${v.nomVaccin} saved!` })
+        res.json({ message: `${v.nomVaccin} enregistrer avec succes !` })
     })
 }
 
