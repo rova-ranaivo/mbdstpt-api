@@ -14,7 +14,7 @@ function authenticateUser(req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
-    Personne.findOne({ username: username, password: password }, (error, p) => {
+    Personne.findOne({ username: username, motdepasse: password }, (error, p) => {
         if(p) {
             let response = {
                 id: p._id,
